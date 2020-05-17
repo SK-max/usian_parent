@@ -1,0 +1,8 @@
+server:
+  port: 8761 #端口号
+
+eureka:
+  client:
+    register-with-eureka: false #不注册自己到Eureka服务中心
+    fetch-registry: false #拉去Eureka服务信息
+
