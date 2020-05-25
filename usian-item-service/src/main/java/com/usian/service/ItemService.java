@@ -1,6 +1,9 @@
 package com.usian.service;
 
+import com.github.pagehelper.Page;
 import com.usian.pojo.TbItem;
+import com.usian.utils.PageResult;
+import com.usian.utils.Result;
 
 /**
  * @author 枫柚素主
@@ -10,4 +13,6 @@ import com.usian.pojo.TbItem;
 public interface ItemService {
 
     TbItem selectItemInfo(Long itemId);
+
+    PageResult selectTbItemAllByPage(Integer page, Long rows);
 }

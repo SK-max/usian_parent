@@ -32,6 +32,7 @@
         <pagehelper-version>1.2.10</pagehelper-version>
         <logback-version>5.0</logback-version>
         <spring-mybats-version>2.0.1</spring-mybats-version>
+        <fastDFS-client-version>1.26.2</fastDFS-client-version>
     </properties>
     <!--版本锁定-->
     <dependencyManagement>
@@ -49,6 +50,12 @@
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
                 <version>${mybatis-version}</version>
+            </dependency>
+            <!--fdfs版本控制-->
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${fastDFS-client-version}</version>
             </dependency>
             <!-- MySql Driver -->
             <dependency>
