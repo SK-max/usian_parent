@@ -15,4 +15,8 @@ public interface ItemService {
     TbItem selectItemInfo(Long itemId);
 
     PageResult selectTbItemAllByPage(Integer page, Long rows);
+
+    void insertTbItem(TbItem tbItem);
+
+    void deleteByItemId(Long itemId);
 }

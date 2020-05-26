@@ -1,6 +1,7 @@
 package com.usian.service;
 
 import com.usian.pojo.TbItemParam;
+import com.usian.utils.PageResult;
 
 
 import java.util.List;
@@ -13,4 +14,8 @@ import java.util.List;
 public interface ItemParamService {
 
     List<TbItemParam> selectItemParamByItemCatId(Long itemCatId);
+
+    PageResult selectItemParamAll(Integer page, Integer rows);
+
+    Integer insertItemParam(Long itemCatId, String patamDate);
 }

@@ -6,11 +6,10 @@ import com.usian.mapper.TbItemMapper;
 import com.usian.pojo.TbItem;
 import com.usian.pojo.TbItemExample;
 import com.usian.utils.PageResult;
-import com.usian.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,7 +20,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
 
     @Autowired
     private TbItemMapper tbItemMapper;
@@ -35,17 +34,30 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     public PageResult selectTbItemAllByPage(Integer page, Long rows) {
-        PageHelper.startPage(page,rows.intValue());
+        PageHelper.startPage(page, rows.intValue());
         TbItemExample tbItemExample = new TbItemExample();
         TbItemExample.Criteria criteria = tbItemExample.createCriteria();
-        criteria.andStatusEqualTo((byte)1);
+        criteria.andStatusEqualTo((byte) 1);
         List<TbItem> tbItemList = tbItemMapper.selectByExample(tbItemExample);
         PageInfo<TbItem> PageInfo = new PageInfo<>(tbItemList);
         PageResult pageResult = new PageResult();
         pageResult.setPageIndex(page);
-        pageResult.setTotalPage(PageInfo.getTotal());
+        pageResult.setTotalPage(Long.valueOf(PageInfo.getPages()));
         pageResult.setResult(PageInfo.getList());
         return pageResult;
+    }
+
+    @Override
+    public void insertTbItem(TbItem tbItem) {
+
+        tbItem.setCreated(new Date());
+        tbItem.setUpdated(new Date());
+        tbItemMapper.insertSelective(tbItem);
+    }
+
+    @Override
+    public void deleteByItemId(Long itemId) {
+        tbItemMapper.deleteByPrimaryKey(itemId);
     }
 
 }

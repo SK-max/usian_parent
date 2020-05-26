@@ -1,10 +1,12 @@
 package com.usian.controller;
 
 import com.usian.feign.ItemServiceFeignClient;
+
 import com.usian.pojo.TbItem;
 import com.usian.utils.PageResult;
 import com.usian.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,10 +45,29 @@ public class ItemController {
     public Result selectTbItemAllByPage(@RequestParam(defaultValue = "1") Integer page,
                                         @RequestParam(defaultValue = "3") Long rows) {
         PageResult pageResult = itemServiceFeignClient.selectTbItemAllByPage(page, rows);
-        if (pageResult.getResult() != null && pageResult.getResult().size()>0) {
+        if (pageResult.getResult() != null && pageResult.getResult().size() > 0) {
             return Result.ok(pageResult);
         }
         return Result.error("请求出错");
     }
 
+    @RequestMapping("/insertTbItem")
+    public Result insertTbItem(TbItem tbItem) {
+        if (tbItem != null) {
+
+            itemServiceFeignClient.inserTbItem(tbItem);
+            return Result.ok("好的");
+        }
+        return Result.error("空的");
+    }
+
+    @RequestMapping("/deleteItemById")
+    public Result deleteItemById(@RequestParam Long itemId ){
+            if(itemId!=null){
+                System.out.println(itemId);
+                itemServiceFeignClient.deleteItemById(itemId);
+                return Result.ok("好的");
+            }
+        return Result.error("查无结果");
+    }
 }

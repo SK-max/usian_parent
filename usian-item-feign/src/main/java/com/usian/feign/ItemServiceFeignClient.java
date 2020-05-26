@@ -6,6 +6,7 @@ import com.usian.pojo.TbItemParam;
 import com.usian.utils.PageResult;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -47,4 +48,30 @@ public interface ItemServiceFeignClient {
      */
     @RequestMapping("/service/itemParam/selectItemParamByItemCatId/{itemCatId}")
     List<TbItemParam> selectItemParamByItemCatId(@PathVariable Long itemCatId);
+
+    /**
+     * 添加商品
+     * @param tbItem
+     */
+    @RequestMapping("/service/item/insertTbItem")
+    void inserTbItem(@RequestBody TbItem tbItem);
+
+    /**
+     * 删除方法
+     * @param itemId
+     */
+    @RequestMapping("/service/item/deleteItemById")
+    void deleteItemById(@RequestParam Long itemId);
+
+    /**
+     * 查询规格参数
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping("/service/itemParam/selectItemParamAll")
+    PageResult selectItemParamAll(@RequestParam Integer page,@RequestParam Integer rows);
+
+    @RequestMapping("/service/itemParam/insertItemParam")
+    Integer insertItemParam(@RequestParam Long itemCatId, @RequestParam String paramData);
 }
