@@ -25,7 +25,7 @@ public class ContentController {
     private ContentServiceFeign contentServiceFeign;
 
     @RequestMapping("/selectTbContentAllByCategoryId")
-    public Result selectTbContentAllByCategoryId(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "3") Integer rows, Long categoryId) {
+    public Result selectTbContentAllByCategoryId(@RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "3") Integer rows, @RequestParam Long categoryId) {
         PageResult pageResult = contentServiceFeign.selectTbContentAllByCategoryId(page, rows, categoryId);
         if (pageResult.getResult().size() > 0) {
             return Result.ok(pageResult);

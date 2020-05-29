@@ -2,8 +2,11 @@ package com.usian.service;
 
 import com.github.pagehelper.Page;
 import com.usian.pojo.TbItem;
+import com.usian.utils.CatNode;
 import com.usian.utils.PageResult;
 import com.usian.utils.Result;
+
+import java.util.List;
 
 /**
  * @author 枫柚素主
@@ -19,4 +22,6 @@ public interface ItemService {
     void insertTbItem(TbItem tbItem);
 
     void deleteByItemId(Long itemId);
+
+
 }

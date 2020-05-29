@@ -25,7 +25,7 @@ public class ContentCategoryController {
     public Result selectContentCategoryByParentId(@RequestParam(defaultValue = "0") Long id) {
         List<TbContentCategory> tbContentCategoryList = contentServiceFeign.selectContentCategoryByParentId(id);
         if (tbContentCategoryList.size() > 0) {
-            return Result.ok();
+            return Result.ok(tbContentCategoryList);
         }
         return Result.error("查无结果");
     }
@@ -40,8 +40,8 @@ public class ContentCategoryController {
     }
 
     @RequestMapping("/deleteContentCategoryById")
-    public Result deleteContentCategoryById(Long cateGoryId) {
-        Integer status = contentServiceFeign.deleteContentCategoryById(cateGoryId);
+    public Result deleteContentCategoryById(@RequestParam Long categoryId) {
+        Integer status = contentServiceFeign.deleteContentCategoryById(categoryId);
         if(status==200){
             return Result.ok();
         }
