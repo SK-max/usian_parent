@@ -1,18 +1,15 @@
 package com.usian.test1;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Study {
 
     public static void main(String[] args) {
 
-        System.out.println("im a test1");
-        System.out.println("im a test1");
-        System.out.println("im a test1");
-        System.out.println("im a test1");
-        System.out.println("im a test1");
-        System.out.println("im a test1");
-        System.out.println("im a test1");
-
-
+        StringBuffer stringBuffer = new StringBuffer();
+        HashMap<Object, Object> hashMap = new HashMap<>();
+        ArrayList<String> strings = new ArrayList<>();
     }
 
 
