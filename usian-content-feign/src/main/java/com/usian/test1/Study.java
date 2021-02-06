@@ -6,7 +6,11 @@ public class Study {
 
         System.out.println("im a test1");
         System.out.println("im a test1");
-        System.out.println("im a test3");
+        System.out.println("im a test1");
+        System.out.println("im a test1");
+        System.out.println("im a test1");
+        System.out.println("im a test1");
+        System.out.println("im a test1");
 
 
     }
