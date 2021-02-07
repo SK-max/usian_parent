@@ -6,6 +6,11 @@ public class TestDemo {
         for (int i=1;i<100;i++){
             System.out.println("test!");
             System.out.println("haha ");
+            System.out.println("haha ");
+            System.out.println("haha ");
+            System.out.println("haha ");
+            System.out.println("haha ");
+            System.out.println("haha ");
         }
 
     }
